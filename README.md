@@ -47,13 +47,11 @@ One resource group containing a VNet, an NSG restricted to inbound SSH (22) and 
 .
 ├── .github/
 │   └── workflows/
-│       └── terraform-deploy.yml     # CI/CD pipeline (plan on PR, apply on merge)
+│       └── cicd.yml     # CI/CD pipeline (plan on PR, apply on merge)
 ├── main.tf
 ├── variables.tf
-├── terraform.tfvars.example         # never commit real terraform.tfvars
-├── docs/
-│   ├── architecture-diagram.svg
-│   └── screenshots/                 # all screenshots referenced below live here
+├── terraform.tfvars
+├── screenshots/                # all screenshots referenced below live here
 └── README.md
 ```
 
@@ -69,7 +67,7 @@ Infrastructure is deployed through GitHub Actions rather than local `terraform a
 - **On merge to `main` →** the full pipeline runs end-to-end: it re-authenticates via OIDC and runs `terraform apply`, actually provisioning/updating the infrastructure.
 
 ```yaml
-# .github/workflows/terraform-deploy.yml (abbreviated)
+# .github/workflows/cicd.yml (abbreviated)
 permissions:
   id-token: write
   contents: read
