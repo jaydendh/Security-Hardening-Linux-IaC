@@ -4,6 +4,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  id-token: write
 jobs:
   terraform:
     name: Terraform Check
@@ -11,8 +14,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Authenticate to Azure
         uses: azure/login@v2
         with:
