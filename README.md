@@ -271,25 +271,3 @@ Copy and paste is actually enabled by default on all Bastion SKUs, including Dev
 ```bash
 terraform destroy
 ```
-
----
-
-## Screenshots Checklist
-
-All screenshots live in `docs/screenshots/`. Filenames match what's referenced throughout this README.
-
-| # | Screenshot | Filename |
-|---|---|---|
-| 1 | Architecture diagram (SVG, in `docs/`, not `docs/screenshots/`) | `architecture-diagram.svg` |
-| 2 | GitHub Actions workflow file open in editor (shows OIDC `permissions:` block) | `gh-actions-workflow-yaml.png` |
-| 3 | Open pull request showing the `terraform plan` check running/passed | `gh-actions-pr-plan-check.png` |
-| 4 | GitHub Actions Actions tab — full pipeline run triggered by merge to `main`, all steps green through `apply` | `gh-actions-run-success.png` |
-| 5 | Expanded `azure/login` step in the Actions log showing OIDC auth succeeded (no secrets visible) | `gh-actions-oidc-login.png` |
-| 6 | `terraform plan` output from the Actions log | `gh-actions-terraform-plan.png` |
-| 7 | `terraform apply` output from the Actions log | `gh-actions-terraform-apply.png` |
-| 8 | Azure Portal — Resource Group showing both VMs, VNet, NSG, public IPs | `azure-resource-group-overview.png` |
-| 9 | Terminal — Linux hardening verification commands + expected output | `linux-hardening-verify.png` |
-| 10 | Terminal/RDP — Windows `net accounts` output showing lockout/password policy | `windows-hardening-verify.png` |
-| 11 | Terminal — `PermitRootLogin` broken then re-verified with `grep` | `linux-permitrootlogin-drift.png` |
-| 12 | Terminal — `su - appuser` demo showing allowed vs. denied sudo command | `linux-least-privilege-user.png` |
-| 13 | PowerShell — `Get-LocalGroupMember -Group "Administrators"` proving appuser is absent | `windows-least-privilege-user.png` |
