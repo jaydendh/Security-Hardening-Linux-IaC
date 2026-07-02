@@ -72,7 +72,7 @@ resource "azurerm_linux_virtual_machine" "linux" {
   name                            = "vm-linux-${var.yourname}"
   location                        = azurerm_resource_group.rg.location
   resource_group_name             = azurerm_resource_group.rg.name
-  size                            = "Standard_DS2_v3"
+  size                            = "Standard_D2s_v3"
   admin_username                  = var.admin_username
   admin_password                  = var.admin_password
   disable_password_authentication = false
@@ -150,7 +150,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   computer_name         = "winvm-${var.yourname}"
-  size                  = "Standard_DS2_v3"
+  size                  = "Standard_D2s_v3"
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   network_interface_ids = [azurerm_network_interface.windows.id]
