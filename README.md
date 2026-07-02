@@ -11,7 +11,7 @@ CIS Level 1 hardening of a Linux and a Windows VM on Azure, provisioned with Ter
 
 ## 📐 Architecture
 
-![Architecture Diagram](./architecture-diagram(2).svg)
+![Architecture Diagram](.screenshots/architecture-diagram(2).svg)
 
 One resource group containing a VNet, an NSG restricted to inbound SSH (22) and RDP (3389) only, and two VMs — Ubuntu 22.04 and Windows Server 2022 — both hardened to CIS Level 1 on first boot. Infrastructure is provisioned by Terraform, deployed through GitHub Actions using OIDC federated credentials (no long-lived Azure secrets stored in GitHub).
 
