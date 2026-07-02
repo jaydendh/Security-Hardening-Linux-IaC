@@ -163,22 +163,6 @@ Expected output — lockout threshold 5, lockout/observation window 15 minutes, 
 
 ---
 
-## Manual Drift Check
-
-To prove the hardening controls are real and not just present in a config file, `PermitRootLogin` was deliberately re-enabled on the Linux VM to simulate configuration drift, then re-verified:
-
-```bash
-sudo sed -i 's/PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
-sudo systemctl restart sshd
-grep PermitRootLogin /etc/ssh/sshd_config
-```
-
-![PermitRootLogin drift check](./screenshots/linux-least-privilege-user.png)
-
-> **Note:** this project verifies drift manually via `grep`, not through Azure Policy Guest Configuration. Continuous policy-based compliance monitoring is a natural next step beyond this lab (see Lessons Learned).
-
----
-
 ## Least-Privilege Users
 
 ### Linux
