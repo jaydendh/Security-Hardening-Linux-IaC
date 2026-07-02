@@ -149,6 +149,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
   name                  = "vm-windows-${var.yourname}"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
+  computer_name         = "winvm-${var.yourname}"
   size                  = "Standard_B1s"
   admin_username        = var.admin_username
   admin_password        = var.admin_password
