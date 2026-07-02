@@ -24,7 +24,6 @@ One resource group containing a VNet, an NSG restricted to inbound SSH (22) and 
 - Configures SSH lockdown, PAM password complexity, auditd, and UFW on Linux
 - Configures account lockout policy, password policy, firewall profiles, and audit logging on Windows
 - Manually verifies every hardening control against its expected state
-- Deliberately breaks a control (`PermitRootLogin`) and manually re-verifies it to confirm the checks actually catch non-compliance
 - Creates least-privilege, non-admin users on both operating systems and proves the privilege boundary holds
 - Deploys all infrastructure through a GitHub Actions CI/CD pipeline using OIDC — no long-lived Azure credentials stored in GitHub
 
