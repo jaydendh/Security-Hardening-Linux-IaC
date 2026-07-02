@@ -1,0 +1,92 @@
+<svg width="900" height="800" viewBox="0 0 900 800" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Azure VM Hardening Lab architecture</title>
+<desc>GitHub Actions authenticates to Azure via OIDC and runs Terraform to deploy a resource group containing a VNet, an NSG restricted to SSH and RDP, a hardened Linux VM, and a hardened Windows VM. The user connects to both VMs over SSH and RDP for verification and drift testing.</desc>
+
+<rect x="0" y="0" width="900" height="800" fill="#ffffff"/>
+
+<text x="450" y="38" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600" fill="#1a1a1a">Azure VM Hardening Lab &#8212; Architecture</text>
+<text x="450" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#666666">Terraform &#183; GitHub Actions CI/CD (OIDC) &#183; CIS Level 1 hardening</text>
+
+<!-- GitHub Actions box -->
+<rect x="300" y="88" width="300" height="72" rx="12" fill="#f5f5f5" stroke="#333333" stroke-width="1.2"/>
+<rect x="322" y="106" width="28" height="28" rx="6" fill="none" stroke="#333333" stroke-width="1.5"/>
+<path d="M328,120 L334,127 L344,111" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="362" y="120" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#1a1a1a">GitHub Actions</text>
+<text x="362" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#555555">OIDC auth &#8594; terraform plan / apply</text>
+
+<!-- Arrow down -->
+<line x1="450" y1="160" x2="450" y2="204" stroke="#555555" stroke-width="1.5"/>
+<path d="M444,198 L450,208 L456,198" fill="none" stroke="#555555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="470" y="188" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#555555">PR &#8594; plan only</text>
+<text x="470" y="203" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#555555">merge to main &#8594; apply</text>
+
+<!-- Resource group container -->
+<rect x="60" y="216" width="780" height="470" rx="20" fill="#eef6fc" stroke="#0078D4" stroke-width="1.5"/>
+<path d="M78,232 Q78,224 86,224 Q88,218 96,220 Q104,220 104,228 Q110,228 110,234 Q110,238 104,238 L82,238 Q76,238 78,232 Z" fill="#eef6fc" stroke="#0078D4" stroke-width="1.2"/>
+<text x="120" y="238" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0C447C">Resource group &#8212; rg-lab-hardening</text>
+
+<!-- VNet container -->
+<rect x="90" y="276" width="720" height="384" rx="16" fill="#ffffff" stroke="#0078D4" stroke-width="1"/>
+<circle cx="114" cy="298" r="3" fill="#0078D4"/>
+<circle cx="130" cy="294" r="3" fill="#0078D4"/>
+<circle cx="122" cy="308" r="3" fill="#0078D4"/>
+<line x1="114" y1="298" x2="130" y2="294" stroke="#0078D4" stroke-width="1"/>
+<line x1="114" y1="298" x2="122" y2="308" stroke="#0078D4" stroke-width="1"/>
+<line x1="130" y1="294" x2="122" y2="308" stroke="#0078D4" stroke-width="1"/>
+<text x="142" y="303" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0C447C">VNet 10.30.0.0/16</text>
+
+<path d="M108,320 L108,326 Q108,332 114,334 Q120,332 120,326 L120,320 Z" fill="none" stroke="#555555" stroke-width="1.2"/>
+<text x="130" y="332" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#555555">NSG &#8212; inbound 22 (SSH) / 3389 (RDP) only</text>
+
+<!-- Subnet container -->
+<rect x="110" y="350" width="680" height="284" rx="14" fill="#f9fafb" stroke="#999999" stroke-width="0.75" stroke-dasharray="5,4"/>
+<text x="128" y="372" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#444444">Subnet 10.30.1.0/24</text>
+
+<!-- Linux VM card -->
+<rect x="140" y="390" width="300" height="212" rx="12" fill="#eafaf1" stroke="#1D9E75" stroke-width="1.2"/>
+<rect x="160" y="408" width="26" height="26" rx="4" fill="none" stroke="#0F6E56" stroke-width="1.5"/>
+<line x1="164" y1="416" x2="182" y2="416" stroke="#0F6E56" stroke-width="1"/>
+<line x1="164" y1="422" x2="182" y2="422" stroke="#0F6E56" stroke-width="1"/>
+<circle cx="167" cy="428" r="1.4" fill="#0F6E56"/>
+<text x="198" y="426" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#0F6E56">vm-linux</text>
+<text x="160" y="452" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">Ubuntu 22.04 LTS</text>
+<text x="160" y="470" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">CIS Level 1 hardened</text>
+<text x="160" y="488" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">auditd &#183; UFW &#183; PAM &#183; pwquality</text>
+<text x="160" y="506" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">SSH root login disabled</text>
+<text x="160" y="524" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">appuser &#8212; scoped sudo only</text>
+<circle cx="166" cy="562" r="7" fill="none" stroke="#0F6E56" stroke-width="1.1"/>
+<ellipse cx="166" cy="562" rx="3" ry="7" fill="none" stroke="#0F6E56" stroke-width="1"/>
+<line x1="159" y1="562" x2="173" y2="562" stroke="#0F6E56" stroke-width="1"/>
+<text x="182" y="566" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#555555">Static public IP</text>
+
+<!-- Windows VM card -->
+<rect x="460" y="390" width="300" height="212" rx="12" fill="#eaf2fb" stroke="#0078D4" stroke-width="1.2"/>
+<rect x="480" y="408" width="26" height="26" rx="4" fill="none" stroke="#0C447C" stroke-width="1.5"/>
+<line x1="484" y1="416" x2="502" y2="416" stroke="#0C447C" stroke-width="1"/>
+<line x1="484" y1="422" x2="502" y2="422" stroke="#0C447C" stroke-width="1"/>
+<circle cx="487" cy="428" r="1.4" fill="#0C447C"/>
+<text x="518" y="426" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#0C447C">vm-win</text>
+<text x="480" y="452" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">Windows Server 2022</text>
+<text x="480" y="470" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">CIS Level 1 hardened</text>
+<text x="480" y="488" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">Lockout policy &#183; firewall &#183; audit</text>
+<text x="480" y="506" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">Guest account disabled</text>
+<text x="480" y="524" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#333333">appuser &#8212; standard user, no admin</text>
+<circle cx="486" cy="562" r="7" fill="none" stroke="#0C447C" stroke-width="1.1"/>
+<ellipse cx="486" cy="562" rx="3" ry="7" fill="none" stroke="#0C447C" stroke-width="1"/>
+<line x1="479" y1="562" x2="493" y2="562" stroke="#0C447C" stroke-width="1"/>
+<text x="502" y="566" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#555555">Static public IP</text>
+
+<!-- Arrow up to user -->
+<line x1="450" y1="686" x2="450" y2="722" stroke="#555555" stroke-width="1.5"/>
+<path d="M444,696 L450,686 L456,696" fill="none" stroke="#555555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="470" y="708" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#555555">SSH (22) / RDP (3389)</text>
+<text x="470" y="723" font-family="Segoe UI, Arial, sans-serif" font-size="11.5" fill="#555555">verification &amp; drift testing</text>
+
+<!-- User box -->
+<rect x="350" y="726" width="200" height="62" rx="12" fill="#f5f5f5" stroke="#333333" stroke-width="1.2"/>
+<circle cx="382" cy="748" r="8" fill="none" stroke="#333333" stroke-width="1.5"/>
+<path d="M370,772 Q382,758 394,772" fill="none" stroke="#333333" stroke-width="1.5" stroke-linecap="round"/>
+<text x="404" y="753" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">You</text>
+<text x="404" y="771" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#666666">Verification &amp; drift testing</text>
+
+</svg>
