@@ -293,5 +293,3 @@ All screenshots live in `docs/screenshots/`. Filenames match what's referenced t
 | 11 | Terminal — `PermitRootLogin` broken then re-verified with `grep` | `linux-permitrootlogin-drift.png` |
 | 12 | Terminal — `su - appuser` demo showing allowed vs. denied sudo command | `linux-least-privilege-user.png` |
 | 13 | PowerShell — `Get-LocalGroupMember -Group "Administrators"` proving appuser is absent | `windows-least-privilege-user.png` |
-
-**Tip:** crop out public IP addresses and any real password values before committing screenshots — even lab passwords shouldn't end up on GitHub.
