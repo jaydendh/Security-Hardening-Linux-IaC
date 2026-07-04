@@ -9,6 +9,11 @@ CIS Level 1 hardening of a Linux and a Windows VM on Azure, provisioned with Ter
 
 ---
 
+## 🎥 Video Walkthrough
+
+[![Watch the walkthrough](./screenshots/video-thumbnail.png)](https://www.loom.com/share/9a73395f7fa548959531a0c7a1363d83)
+
+
 ## 📐 Architecture
 
 ![Architecture Diagram](./screenshots/architecture-diagram(2).svg)
